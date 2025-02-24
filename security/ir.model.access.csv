@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_mantenimiento_equipo,mantenimiento.equipo,model_mantenimiento_equipo,base.group_user,1,1,1,1
-access_equipo_categoria,equipo.categoria,model_equipo_categoria,base.group_user,1,1,1,1
+access_mantenimiento_categoria,mantenimiento.categoria,model_mantenimiento_categoria,base.group_user,1,1,1,1
+access_mantenimiento_proveedor,mantenimiento.proveedor,model_mantenimiento_proveedor,base.group_user,1,1,1,1

@@ -1,73 +1,104 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<record id="mantenimiento_list_view" model="ir.ui.view">
-    <field name="name">mantenimiento.equipo.tree</field>
-    <field name="model">mantenimiento.equipo</field>
-    <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="category_id"/>
-            <field name="description"/>
-            <field name="ubicacion"/>
-            <field name="numeroSerie"/>
-            <field name="proveedor_id"/>  <!-- Cambié proveedor a proveedor_id -->
-        </tree>
-    </field>
-</record>
-
-
-    <!-- Form view for Equipo Categoria -->
-    <record id="view_category_form" model="ir.ui.view">
-      <field name="name">Equipo.Categoria.form</field>
-      <field name="model">equipo.categoria</field>
+    <!-- Vista de lista para el modelo mantenimiento.equipo -->
+    <record id="mantenimiento_list_view" model="ir.ui.view">
+      <field name="name">mantenimiento.equipo.tree</field>
+      <field name="model">mantenimiento.equipo</field>
       <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-              <field name="name"/>
-              <field name="description"/>
-            </group>
-          </sheet>
-        </form>
+        <tree>
+          <field name="name"/>
+          <field name="category_id"/>
+          <field name="description"/>
+          <field name="ubicacion"/>
+          <field name="numeroSerie"/>
+          <field name="proveedor_id"/>
+        </tree>
       </field>
     </record>
 
-    <!-- Form view for Proveedor (corregido id) -->
-  <record id="view_proveedor_form" model="ir.ui.view">
-    <field name="name">equipo.proveedor.form</field>
-    <field name="model">equipo.proveedor</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <group>
-                    <field name="name"/>
-                    <field name="description"/>
-                    <field name="telefono"/>
-                    <field name="email"/>
-                    <field name="direccion"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
+    <!-- Vista de lista para el modelo mantenimiento.categoria -->
+    <record id="view_category_tree" model="ir.ui.view">
+      <field name="name">mantenimiento.categoria.tree</field>
+      <field name="model">mantenimiento.categoria</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
 
+    <!-- view Provedor-->
+     <record id="view_proveedor_tree" model="ir.ui.view">
+        <field name="name">mantenimiento.proveedor.tree</field>
+        <field name="model">mantenimiento.proveedor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="telefono"/>
+                <field name="email"/>
+                <field name="direccion"/>
+            </tree>
+        </field>
+    </record>
 
+    <record id="view_proveedor_form" model="ir.ui.view">
+        <field name="name">mantenimiento.proveedor.form</field>
+        <field name="model">mantenimiento.proveedor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="telefono"/>
+                        <field name="email"/>
+                        <field name="direccion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-    <!-- Actions for opening views on models -->
+    <!-- Acción para abrir las vistas de mantenimiento.equipo -->
     <record id="mantenimiento_action" model="ir.actions.act_window">
       <field name="name">Mantenimiento</field>
       <field name="res_model">mantenimiento.equipo</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Top menu item -->
-    <menuitem name="Mantenimiento" id="mantenimiento.menu_root"/>
+      <record id="proveedor_action" model="ir.actions.act_window">
+      <field name="name">Proveedor</field>
+      <field name="res_model">mantenimiento.proveedor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
-    <!-- menu categories -->
-    <menuitem name="Administracion" id="escuela.equipo_menu_1" parent="mantenimiento.menu_root"/>
-    <menuitem name="Equipo" id="mantenimiento.menu_1" parent="mantenimiento.menu_root" action="mantenimiento_action"/>
-    <menuitem name="Categoria" id="mantenimiento.categoria" parent="mantenimiento.menu_root" action="mantenimiento_action"/>
-    <menuitem name="Proveedor" id="mantenimiento.proveedor" parent="mantenimiento.menu_root" action="mantenimiento_action"/>
+    <!-- Acción para abrir las vistas de Categorías -->
+    <record id="action_categoria_list" model="ir.actions.act_window">
+      <field name="name">Categorías de Equipo</field>
+      <field name="res_model">mantenimiento.categoria</field>
+      <field name="view_mode">tree,form</field> <!-- Agregado 'form' para permitir la creación -->
+      <field name="view_id" ref="view_category_tree"/>
+      <field name="context">{}</field>
+    </record>
+      <!-- Menú Proveedor con acción asociada -->
+    <record id="action_proveedor" model="ir.actions.act_window">
+      <field name="name">Proveedores de Equipos</field>
+      <field name="res_model">mantenimiento.proveedor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+     <!-- Menú Principal -->
+    <menuitem name="Mantenimiento" id="menu_mantenimiento_root" sequence="1"/>
+
+    <!-- Menú de Administración dentro de "Mantenimiento" -->
+    <menuitem name="Administración" id="menu_administracion" parent="menu_mantenimiento_root" sequence="2"/>
+
+    <!-- Submenús dentro de "Administración" -->
+    <menuitem name="Equipos" id="menu_mantenimiento_equipo" parent="menu_administracion" action="mantenimiento_action" sequence="3"/>
+    <menuitem name="Categorías" id="menu_mantenimiento_categoria" parent="menu_administracion" action="action_categoria_list" sequence="4"/>
+    <menuitem name="Proveedores" id="menu_mantenimiento_proveedor" parent="menu_administracion" action="action_proveedor" sequence="5"/>
+  
   </data>
 </odoo>

@@ -33,7 +33,7 @@
         'views/mantenimiento_articulo_views.xml',
         'views/mantenimiento_reparacion_views.xml',
     ],
-    # only loaded in demonstration mode
+    'icon': '/owl/static/src/img/img.png',
     'demo': [
         'demo/demo.xml',
     ],

@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+    <!-- Vista de lista para el modelo mantenimiento.orden -->
+    <record id="orden_list_view" model="ir.ui.view">
+      <field name="name">mantenimiento.orden.tree</field>
+      <field name="model">mantenimiento.orden</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="tipo_mantenimiento"/>
+          <field name="fecha_programada"/>
+          <field name="fecha_realizacion"/>
+          <field name="equipo_id"/>
+          <field name="estado"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista de formulario para el modelo mantenimiento.orden -->
+    <record id="view_orden_form" model="ir.ui.view">
+      <field name="name">mantenimiento.orden.form</field>
+      <field name="model">mantenimiento.orden</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="tipo_mantenimiento"/>
+              <field name="fecha_programada"/>
+              <field name="fecha_realizacion"/>
+              <field name="equipo_id"/>
+              <field name="estado"/>
+              <field name="descripcion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Acción para abrir las vistas de mantenimiento.orden -->
+    <record id="orden_action" model="ir.actions.act_window">
+      <field name="name">Orden Mantenimiento</field>
+      <field name="res_model">mantenimiento.orden</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+  </data>
+</odoo>

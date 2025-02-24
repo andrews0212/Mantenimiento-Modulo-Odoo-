@@ -1,3 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from . import models
+from . import categoria
+from . import proveedor
+from . import equipo
+from . import orden

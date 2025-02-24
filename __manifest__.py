@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "mantenimiento",
+    'name': "gestión_mantenimiento",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Módulo para la gestión de órdenes de mantenimiento y equipos""",
 
     'description': """
-        Long description of module's purpose
+        Este módulo permite gestionar órdenes de mantenimiento, equipos, categorías y proveedores.
+        Incluye vistas de lista y formulario para cada modelo, así como menús y controles de acceso.
     """,
 
-    'author': "My Company",
+    'author': "Andrews Dos Ramos",
     'website': "https://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Maintenance',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -25,8 +25,11 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'views/orden_views.xml',
+        'views/equipo_views.xml',
+        'views/categoria_views.xml',
+        'views/proveedor_views.xml',
+        'views/menu_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

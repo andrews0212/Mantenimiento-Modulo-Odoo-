@@ -30,6 +30,8 @@
         'views/categoria_views.xml',
         'views/proveedor_views.xml',
         'views/menu_views.xml',
+        'views/mantenimiento_articulo_views.xml',
+        'views/mantenimiento_reparacion_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

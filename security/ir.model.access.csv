@@ -3,3 +3,5 @@ access_mantenimiento_categoria,mantenimiento.categoria,model_mantenimiento_categ
 access_mantenimiento_proveedor,mantenimiento.proveedor,model_mantenimiento_proveedor,base.group_user,1,1,1,1
 access_mantenimiento_equipo,mantenimiento.equipo,model_mantenimiento_equipo,base.group_user,1,1,1,1
 access_mantenimiento_orden,mantenimiento.orden,model_mantenimiento_orden,base.group_user,1,1,1,1
+access_mantenimiento_articulo,mantenimiento.articulo,model_mantenimiento_articulo,base.group_user,1,1,1,1
+access_mantenimiento_reparacion,mantenimiento.reparacion,model_mantenimiento_reparacion,base.group_user,1,1,1,1

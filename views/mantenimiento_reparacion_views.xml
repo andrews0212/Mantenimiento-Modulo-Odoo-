@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para el modelo mantenimiento.reparacion -->
+        <record id="view_mantenimiento_reparacion_tree" model="ir.ui.view">
+            <field name="name">mantenimiento.reparacion.tree</field>
+            <field name="model">mantenimiento.reparacion</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fecha"/>
+                    <field name="descripcion"/>
+                    <field name="costo"/>
+                    <field name="tecnico"/>
+                    <field name="articulo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para el modelo mantenimiento.reparacion -->
+        <record id="view_mantenimiento_reparacion_form" model="ir.ui.view">
+            <field name="name">mantenimiento.reparacion.form</field>
+            <field name="model">mantenimiento.reparacion</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="fecha"/>
+                            <field name="descripcion"/>
+                            <field name="costo"/>
+                            <field name="tecnico"/>
+                            <field name="articulo_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para abrir las vistas de mantenimiento.reparacion -->
+        <record id="action_mantenimiento_reparacion" model="ir.actions.act_window">
+            <field name="name">Historial de Reparaciones</field>
+            <field name="res_model">mantenimiento.reparacion</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

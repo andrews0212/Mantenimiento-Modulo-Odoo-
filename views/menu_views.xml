@@ -7,11 +7,14 @@
     <menuitem name="Gestor Equipo" id="menu_administracion" parent="menu_mantenimiento_root" sequence="2"/>
 
     <!-- Submenús dentro de "Administración" -->
-    <menuitem name="Equipos" id="menu_mantenimiento_equipo" parent="menu_administracion" action="mantenimiento_action" sequence="3"/>
+    <menuitem name="Equipos" id="menu_mantenimiento_equipo" parent="menu_administracion" action="action_mantenimiento_articulo" sequence="3"/>
     <menuitem name="Categorías" id="menu_mantenimiento_categoria" parent="menu_administracion" action="action_categoria_list" sequence="4"/>
     <menuitem name="Proveedores" id="menu_mantenimiento_proveedor" parent="menu_administracion" action="action_proveedor" sequence="5"/>
 
     <menuitem name="Mantenimiento" id="menu_Mantenimiento" parent="menu_mantenimiento_root"/>
     <menuitem name="Orden Mantenimiento" id="menu_mantenimiento_orden" parent="menu_Mantenimiento" action="orden_action"/>
+    
+    <menuitem name="Histórico Equipo" id="menu_historico_equipo" parent="menu_Mantenimiento" action="action_mantenimiento_articulo" sequence="6"/>
+    <menuitem name="Histórico Reparación" id="menu_historico_reparacion" parent="menu_Mantenimiento" action="action_mantenimiento_reparacion" sequence="7"/>
   </data>
 </odoo>

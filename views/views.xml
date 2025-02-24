@@ -1,20 +1,59 @@
 <odoo>
   <data>
-    <!-- Vista de lista para el modelo mantenimiento.equipo -->
-    <record id="mantenimiento_list_view" model="ir.ui.view">
-      <field name="name">mantenimiento.equipo.tree</field>
-      <field name="model">mantenimiento.equipo</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="category_id"/>
-          <field name="description"/>
-          <field name="ubicacion"/>
-          <field name="numeroSerie"/>
-          <field name="proveedor_id"/>
-        </tree>
-      </field>
+
+  <!-- Vista de lista para el modelo mantenimiento.orden -->
+   <record id="orden_list_view" model="ir.ui.view">
+  <field name="name">mantenimiento.orden.tree</field>
+  <field name="model">mantenimiento.orden</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="tipo_mantenimiento"/>
+      <field name="fecha_programada"/>
+      <field name="fecha_realizacion"/>
+      <field name="equipo_id"/>
+      <field name="estado"/>
+      <field name="descripcion"/>
+    </tree>
+  </field>
+</record>
+
+  <!-- Vista de formulario para el modelo mantenimiento.orden -->
+     <record id="view_orden_form" model="ir.ui.view">
+        <field name="name">mantenimiento.orden.form</field>
+        <field name="model">mantenimiento.orden</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipo_mantenimiento"/>
+                        <field name="fecha_programada"/>
+                        <field name="fecha_realizacion"/>
+                        <field name="equipo_id"/>
+                        <field name="estado"/>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
+
+
+    <!-- Vista de lista para el modelo mantenimiento.equipo -->
+  <record id="mantenimiento_list_view" model="ir.ui.view">
+  <field name="name">mantenimiento.equipo.tree</field>
+  <field name="model">mantenimiento.equipo</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name"/>
+      <field name="category_id"/>
+      <field name="description"/>
+      <field name="ubicacion"/>
+      <field name="numeroSerie"/>
+      <field name="proveedor_id"/>
+    </tree>
+  </field>
+</record>
+
 
     <!-- Vista de lista para el modelo mantenimiento.categoria -->
     <record id="view_category_tree" model="ir.ui.view">
@@ -62,8 +101,13 @@
 
     <!-- Acción para abrir las vistas de mantenimiento.equipo -->
     <record id="mantenimiento_action" model="ir.actions.act_window">
-      <field name="name">Mantenimiento</field>
+      <field name="name">Equipo</field>
       <field name="res_model">mantenimiento.equipo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record id="orden_action" model="ir.actions.act_window">
+      <field name="name">Orden Mantenimiento</field>
+      <field name="res_model">mantenimiento.orden</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -89,16 +133,19 @@
     </record>
 
 
-     <!-- Menú Principal -->
+    <!-- Menú Principal -->
     <menuitem name="Mantenimiento" id="menu_mantenimiento_root" sequence="1"/>
 
     <!-- Menú de Administración dentro de "Mantenimiento" -->
-    <menuitem name="Administración" id="menu_administracion" parent="menu_mantenimiento_root" sequence="2"/>
+    <menuitem name="Gestor Equipo" id="menu_administracion" parent="menu_mantenimiento_root" sequence="2"/>
 
     <!-- Submenús dentro de "Administración" -->
     <menuitem name="Equipos" id="menu_mantenimiento_equipo" parent="menu_administracion" action="mantenimiento_action" sequence="3"/>
     <menuitem name="Categorías" id="menu_mantenimiento_categoria" parent="menu_administracion" action="action_categoria_list" sequence="4"/>
     <menuitem name="Proveedores" id="menu_mantenimiento_proveedor" parent="menu_administracion" action="action_proveedor" sequence="5"/>
-  
+
+    <menuitem name="Mantenimiento" id="menu_Mantenimiento" parent="menu_mantenimiento_root"/>
+    
+  <menuitem name="Orden Mantenimiento" id="menu_mantenimiento_orden" parent="menu_Mantenimiento" action="orden_action"/>
   </data>
 </odoo>
